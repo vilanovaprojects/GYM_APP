@@ -1,8 +1,26 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-    <ItemGroup>
-        <Compile Update="Form1.cs">
-            <SubType>Form</SubType>
-        </Compile>
-    </ItemGroup>
+  <PropertyGroup>
+    <_LastSelectedProfileId>C:\Users\Moises\Documents\PROGRAMACION\MIS PROYECTOS\GYM_APP\GYM_APP\Properties\PublishProfiles\ClickOnceProfile.pubxml</_LastSelectedProfileId>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Update="frmAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="frmContacto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="frmEjercicios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="frmOpciones.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="frmPrincipal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="frmPlaning.cs">
+      <SubType>Form</SubType>
+    </Compile>
+  </ItemGroup>
 </Project>

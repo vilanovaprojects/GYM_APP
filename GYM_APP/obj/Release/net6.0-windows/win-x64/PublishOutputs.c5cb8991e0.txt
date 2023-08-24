@@ -1,0 +1,8 @@
+C:\Users\Moises\Documents\PROGRAMACION\MIS PROYECTOS\ProyectosEmpaquetados\GYM_APP.pdb
+C:\Users\Moises\Documents\PROGRAMACION\MIS PROYECTOS\ProyectosEmpaquetados\Connection\connection.xml
+C:\Users\Moises\Documents\PROGRAMACION\MIS PROYECTOS\ProyectosEmpaquetados\comerr64.dll
+C:\Users\Moises\Documents\PROGRAMACION\MIS PROYECTOS\ProyectosEmpaquetados\gssapi64.dll
+C:\Users\Moises\Documents\PROGRAMACION\MIS PROYECTOS\ProyectosEmpaquetados\k5sprt64.dll
+C:\Users\Moises\Documents\PROGRAMACION\MIS PROYECTOS\ProyectosEmpaquetados\krb5_64.dll
+C:\Users\Moises\Documents\PROGRAMACION\MIS PROYECTOS\ProyectosEmpaquetados\krbcc64.dll
+C:\Users\Moises\Documents\PROGRAMACION\MIS PROYECTOS\ProyectosEmpaquetados\GYM_APP.exe
