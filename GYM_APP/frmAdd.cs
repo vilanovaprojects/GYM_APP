@@ -48,7 +48,6 @@ namespace GYM_APP
             OpenFileDialog dialog = new OpenFileDialog();
             dialog.Title = "Seleccione una imagen";
             dialog.Filter = "Archivos de imagen| *.jpg; *.jpeg";
-            //dialog.InitialDirectory = "C:\\Users\\Moises\\Pictures\\Screenshots";
 
             if (dialog.ShowDialog() == DialogResult.OK)
             {
@@ -77,7 +76,7 @@ namespace GYM_APP
             {
                 MySqlConnection conexion = new MySqlConnection(ConnectionDB());
                 conexion.Open();
-                string insertQuery = "SELECT nombre FROM Ejercicio";
+                string insertQuery = "SELECT nombre FROM EJERCICIOS";
                 MySqlCommand command = new MySqlCommand(insertQuery, conexion);
                 MySqlDataReader rd = command.ExecuteReader();
 
@@ -123,7 +122,7 @@ namespace GYM_APP
                     MySqlConnection conexion = new MySqlConnection(ConnectionDB());
                     conexion.Open();
 
-                    string deleteQuery = "DELETE FROM Ejercicio WHERE nombre = @nombre";
+                    string deleteQuery = "DELETE FROM EJERCICIOS WHERE nombre = @nombre";
                     MySqlCommand command = new MySqlCommand(deleteQuery, conexion);
                     command.Parameters.AddWithValue("@nombre", nombre);
 
@@ -159,7 +158,7 @@ namespace GYM_APP
                     MySqlConnection conexion = new MySqlConnection(ConnectionDB());
                     conexion.Open();
 
-                    string insertQuery = "INSERT INTO Ejercicio (nombre, tipo, comentarios, img_ejercicio) VALUES (@nombre, @tipo, @comentarios, @imagen)";
+                    string insertQuery = "INSERT INTO EJERCICIOS (nombre, tipo, comentarios, img_ejercicio) VALUES (@nombre, @tipo, @comentarios, @imagen)";
 
                     MySqlCommand command = new MySqlCommand(insertQuery, conexion);
                     command.Parameters.AddWithValue("@nombre", nombre);

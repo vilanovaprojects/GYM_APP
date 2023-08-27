@@ -80,7 +80,7 @@
             btnOpciones.Name = "btnOpciones";
             btnOpciones.Size = new Size(173, 52);
             btnOpciones.TabIndex = 5;
-            btnOpciones.Text = "Opciones";
+            btnOpciones.Text = " Opciones";
             btnOpciones.UseVisualStyleBackColor = true;
             btnOpciones.Click += btnOpciones_Click;
             // 
@@ -97,7 +97,7 @@
             btnContacto.Name = "btnContacto";
             btnContacto.Size = new Size(173, 52);
             btnContacto.TabIndex = 4;
-            btnContacto.Text = "Contacto";
+            btnContacto.Text = " Contacto";
             btnContacto.UseVisualStyleBackColor = true;
             btnContacto.Click += btnContacto_Click;
             // 
@@ -114,7 +114,7 @@
             btnAnadir.Name = "btnAnadir";
             btnAnadir.Size = new Size(173, 52);
             btnAnadir.TabIndex = 3;
-            btnAnadir.Text = "Añadir";
+            btnAnadir.Text = " Añadir Ej.";
             btnAnadir.UseVisualStyleBackColor = true;
             btnAnadir.Click += btnAnadir_Click;
             // 
@@ -148,7 +148,7 @@
             btnPlaning.Name = "btnPlaning";
             btnPlaning.Size = new Size(173, 52);
             btnPlaning.TabIndex = 1;
-            btnPlaning.Text = "Planing";
+            btnPlaning.Text = "Planing  ";
             btnPlaning.UseVisualStyleBackColor = true;
             btnPlaning.Click += btnPlaning_Click;
             // 
@@ -200,9 +200,9 @@
             label2.ForeColor = Color.DarkTurquoise;
             label2.Location = new Point(314, 206);
             label2.Name = "label2";
-            label2.Size = new Size(195, 47);
+            label2.Size = new Size(191, 47);
             label2.TabIndex = 0;
-            label2.Text = "Bienbenido";
+            label2.Text = "Bienvenido";
             // 
             // panelSuperior
             // 

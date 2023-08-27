@@ -1,7 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<configuration>
-	<appSettings>
-		<add key="ConnectionString" value="Server=0.0.0.0;Database=gym_app;Uid=GYM-Admin;Pwd=hhhhjjj;" />
-	</appSettings>
-</configuration>
-

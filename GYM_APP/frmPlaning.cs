@@ -24,7 +24,7 @@ namespace GYM_APP
         public frmPlaning()
         {
             InitializeComponent();
-            CargarDatos(obteneDatos());
+            CargarNombres();
             Restablecer();
 
         }
@@ -56,6 +56,7 @@ namespace GYM_APP
         private List<Planing2> obteneDatos()
         {
             string cadenaConexion = ConnectionDB();
+            string nombre = cbNombres.SelectedItem.ToString();
 
             if (cadenaConexion == "conexion fallida")
             {
@@ -69,9 +70,10 @@ namespace GYM_APP
                     MySqlConnection conexion = new MySqlConnection(cadenaConexion);
                     conexion.Open();
 
-                    string insertQuery = "SELECT p.dia, e.nombre, p.repes, p.Comentarios, e.img_ejercicio FROM Ejercicio e INNER JOIN PLANING p ON e.nombre = p.ejercicio";
-                    MySqlCommand command = new MySqlCommand(insertQuery, conexion);
-
+                    string readQuery = "SELECT p.dia, e.nombre, p.repes, p.Comentarios, e.img_ejercicio FROM EJERCICIOS e INNER JOIN PLANING p ON e.nombre = p.ejercicio WHERE p.usuario = @nombre;";
+                    MySqlCommand command = new MySqlCommand(readQuery, conexion);
+                    command.Parameters.Add("@nombre", MySqlDbType.VarChar);
+                    command.Parameters["@nombre"].Value = nombre;
 
                     MySqlDataReader rd = command.ExecuteReader();
 
@@ -96,14 +98,14 @@ namespace GYM_APP
                 }
                 catch (MySqlException ex)
                 {
-                    MessageBox.Show ("No se ha podido conectar con la base de datos. "+ex.Message);
+                    MessageBox.Show("No se ha podido conectar con la base de datos. " + ex.Message);
                     timerParpadeo.Start();
                     return null;
 
                 }
-                
+
             }
-            
+
         }
 
         public void CargarDatos(List<Planing2> lista)
@@ -113,7 +115,7 @@ namespace GYM_APP
             dataGridView1.Rows.Add();
             dataGridView1.Rows.Add();
 
-            if(lista != null)
+            if (lista != null)
             {
                 foreach (var registro in lista)
                 {
@@ -190,7 +192,7 @@ namespace GYM_APP
                 dataGridView1.Rows.Clear();
             }
 
-            
+
         }
 
         private void btnPDF_Click(object sender, EventArgs e)
@@ -273,6 +275,58 @@ namespace GYM_APP
         {
             lblSinConexion.Visible = !lblSinConexion.Visible;
             pbSinConexion.Visible = !pbSinConexion.Visible;
+        }
+
+        private void CargarNombres()
+        {
+            cbNombres.Items.Clear();
+
+            string cadenaConexion = ConnectionDB();
+            if (cadenaConexion == "conexion fallida")
+            {
+                timerParpadeo.Start();
+            }
+            else
+            {
+                try
+                {
+                    MySqlConnection conexion = new MySqlConnection(cadenaConexion);
+                    conexion.Open();
+
+                    string leerusuarios = "SELECT * FROM USUARIOS";
+                    MySqlCommand comand = new MySqlCommand(leerusuarios, conexion);
+
+                    MySqlDataReader rd = comand.ExecuteReader();
+
+                    if (rd.HasRows)
+                    {
+                        while (rd.Read())
+                        {
+                            cbNombres.Items.Add(rd.GetString(0));
+                        }
+                    }
+
+
+                }
+                catch (MySqlException ex)
+                {
+                    MessageBox.Show("No se han podido leer los nombres de usuario. " + ex.Message);
+                }
+            }
+
+
+        }
+
+        private void cbNombres_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string nombre = cbNombres.SelectedItem != null ? cbNombres.SelectedItem.ToString() : null;
+
+            if (nombre != string.Empty && nombre != null && nombre != "-1")
+            {
+                CargarDatos(obteneDatos());
+            }
+
+
         }
     }
 }

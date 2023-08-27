@@ -7,6 +7,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -33,6 +34,7 @@ namespace GYM_APP
             Restablecer();
             LeerDatabase();
             CargarDataGridView();
+            CargarNombres();
 
         }
 
@@ -75,8 +77,9 @@ namespace GYM_APP
                 {
                     MySqlConnection conexion = new MySqlConnection(cadenaConexion);
                     conexion.Open();
-                    MySqlCommand comand = new MySqlCommand("Readonly", conexion);
-                    comand.CommandType = CommandType.StoredProcedure;
+
+                    string leerejercicios = "SELECT * FROM EJERCICIOS";
+                    MySqlCommand comand = new MySqlCommand(leerejercicios, conexion);
 
                     MySqlDataReader rd = comand.ExecuteReader();
 
@@ -392,72 +395,104 @@ namespace GYM_APP
             }
         }
 
-        private void button5_Click(object sender, EventArgs e)
+        private void btnCrarPrograma_Click(object sender, EventArgs e)
         {
-            MySqlConnection conexion = new MySqlConnection(ConnectionDB());
-            conexion.Open();
+            string nombre = cbNombres.SelectedItem != null ? cbNombres.SelectedItem.ToString() : null;
 
-            //Borrado previo de la tabla
-            string truncateQuery = "TRUNCATE TABLE PLANING";
-            MySqlCommand truncateCommand = new MySqlCommand(truncateQuery, conexion);
-            truncateCommand.ExecuteNonQuery();
-
-
-
-            string insertQuery = "INSERT INTO PLANING (dia, ejercicio, repes) VALUES (@dia, @ejercicio, @repes)";
-            MySqlCommand command = new MySqlCommand(insertQuery, conexion);
-
-
-            command.Parameters.Add("@dia", MySqlDbType.VarChar);
-            command.Parameters.Add("@ejercicio", MySqlDbType.VarChar);
-            command.Parameters.Add("@repes", MySqlDbType.VarChar);
-
-
-            foreach (Planing dato in listaLunes)
+            if (nombre != string.Empty && nombre != null && nombre != "-1")
             {
-                command.Parameters["@dia"].Value = "Lunes";
-                command.Parameters["@ejercicio"].Value = dato.Ejercicio;
-                command.Parameters["@repes"].Value = dato.Repes;
-                command.ExecuteNonQuery();
-            }
-            foreach (Planing dato in listaMartes)
-            {
-                command.Parameters["@dia"].Value = "Martes";
-                command.Parameters["@ejercicio"].Value = dato.Ejercicio;
-                command.Parameters["@repes"].Value = dato.Repes;
-                command.ExecuteNonQuery();
-            }
-            foreach (Planing dato in listaMiercoles)
-            {
-                command.Parameters["@dia"].Value = "Miercoles";
-                command.Parameters["@ejercicio"].Value = dato.Ejercicio;
-                command.Parameters["@repes"].Value = dato.Repes;
-                command.ExecuteNonQuery();
-            }
-            foreach (Planing dato in listaJueves)
-            {
-                command.Parameters["@dia"].Value = "Jueves";
-                command.Parameters["@ejercicio"].Value = dato.Ejercicio;
-                command.Parameters["@repes"].Value = dato.Repes;
-                command.ExecuteNonQuery();
-            }
-            foreach (Planing dato in listaViernes)
-            {
-                command.Parameters["@dia"].Value = "Viernes";
-                command.Parameters["@ejercicio"].Value = dato.Ejercicio;
-                command.Parameters["@repes"].Value = dato.Repes;
-                command.ExecuteNonQuery();
+                string cadenaConexion = ConnectionDB();
+
+                if (cadenaConexion == "conexion fallida")
+                {
+                    timerParpadeo.Start();
+                }
+                else
+                {
+                    try
+                    {
+                        MySqlConnection conexion = new MySqlConnection(cadenaConexion);
+                        conexion.Open();
+
+                        //Borrado previo de la tabla de Usuario
+                        string deleteQuery = "DELETE FROM PLANING WHERE usuario = @usuario";
+                        MySqlCommand deleteCommand = new MySqlCommand(deleteQuery, conexion);
+                        deleteCommand.Parameters.Add("@usuario", MySqlDbType.VarChar);
+                        deleteCommand.Parameters["@usuario"].Value = nombre;
+
+                        deleteCommand.ExecuteNonQuery();
+
+                        string insertQuery = "INSERT INTO PLANING (usuario, dia, ejercicio, repes) VALUES (@usuario, @dia, @ejercicio, @repes)";
+                        MySqlCommand command = new MySqlCommand(insertQuery, conexion);
+
+                        command.Parameters.Add("@usuario", MySqlDbType.VarChar);
+                        command.Parameters.Add("@dia", MySqlDbType.VarChar);
+                        command.Parameters.Add("@ejercicio", MySqlDbType.VarChar);
+                        command.Parameters.Add("@repes", MySqlDbType.VarChar);
+
+
+                        foreach (Planing dato in listaLunes)
+                        {
+                            command.Parameters["@usuario"].Value = nombre;
+                            command.Parameters["@dia"].Value = "Lunes";
+                            command.Parameters["@ejercicio"].Value = dato.Ejercicio;
+                            command.Parameters["@repes"].Value = dato.Repes;
+                            command.ExecuteNonQuery();
+                        }
+                        foreach (Planing dato in listaMartes)
+                        {
+                            command.Parameters["@usuario"].Value = nombre;
+                            command.Parameters["@dia"].Value = "Martes";
+                            command.Parameters["@ejercicio"].Value = dato.Ejercicio;
+                            command.Parameters["@repes"].Value = dato.Repes;
+                            command.ExecuteNonQuery();
+                        }
+                        foreach (Planing dato in listaMiercoles)
+                        {
+                            command.Parameters["@usuario"].Value = nombre;
+                            command.Parameters["@dia"].Value = "Miercoles";
+                            command.Parameters["@ejercicio"].Value = dato.Ejercicio;
+                            command.Parameters["@repes"].Value = dato.Repes;
+                            command.ExecuteNonQuery();
+                        }
+                        foreach (Planing dato in listaJueves)
+                        {
+                            command.Parameters["@usuario"].Value = nombre;
+                            command.Parameters["@dia"].Value = "Jueves";
+                            command.Parameters["@ejercicio"].Value = dato.Ejercicio;
+                            command.Parameters["@repes"].Value = dato.Repes;
+                            command.ExecuteNonQuery();
+                        }
+                        foreach (Planing dato in listaViernes)
+                        {
+                            command.Parameters["@usuario"].Value = nombre;
+                            command.Parameters["@dia"].Value = "Viernes";
+                            command.Parameters["@ejercicio"].Value = dato.Ejercicio;
+                            command.Parameters["@repes"].Value = dato.Repes;
+                            command.ExecuteNonQuery();
+                        }
+
+                        conexion.Close();
+
+                        btnLunes.BackColor = Color.White;
+                        btnMartes.BackColor = Color.White;
+                        btnMiercoles.BackColor = Color.White;
+                        btnJueves.BackColor = Color.White;
+                        btnViernes.BackColor = Color.White;
+
+                        MessageBox.Show("Programa semanal de " + nombre +
+                            " actualizado correctamente", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+                    }
+                    catch (MySqlException ex)
+                    {
+                        MessageBox.Show("No se ha podido conectar con la base de datos. " + ex.Message);
+                        timerParpadeo.Start();
+                    }
+
+                }
             }
 
-            conexion.Close();
-
-            btnLunes.BackColor = Color.White;
-            btnMartes.BackColor = Color.White;
-            btnMiercoles.BackColor = Color.White;
-            btnJueves.BackColor = Color.White;
-            btnViernes.BackColor = Color.White;
-
-            MessageBox.Show("Programa semanal actualizado correctamente", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
 
         }
@@ -698,6 +733,47 @@ namespace GYM_APP
             pbSinConexion.Visible = !pbSinConexion.Visible;
         }
 
+        private void CargarNombres()
+        {
+            cbNombres.Items.Clear();
+
+            string cadenaConexion = ConnectionDB();
+            if (cadenaConexion == "conexion fallida")
+            {
+                timerParpadeo.Start();
+            }
+            else
+            {
+                try
+                {
+                    MySqlConnection conexion = new MySqlConnection(cadenaConexion);
+                    conexion.Open();
+
+                    string leerusuarios = "SELECT * FROM USUARIOS";
+                    MySqlCommand comand = new MySqlCommand(leerusuarios, conexion);
+
+                    MySqlDataReader rd = comand.ExecuteReader();
+
+                    if (rd.HasRows)
+                    {
+                        while (rd.Read())
+                        {
+                            cbNombres.Items.Add(rd.GetString(0));
+                        }
+                    }
+
+
+                }
+                catch (MySqlException ex)
+                {
+                    MessageBox.Show("No se han podido leer los nombres de usuario. " + ex.Message);
+                }
+            }
+
+
+        }
     }
 }
+
+
 

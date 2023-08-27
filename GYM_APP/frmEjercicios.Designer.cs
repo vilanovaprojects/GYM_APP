@@ -43,6 +43,8 @@
             lblSinConexion = new Label();
             pbSinConexion = new PictureBox();
             timerParpadeo = new System.Windows.Forms.Timer(components);
+            label1 = new Label();
+            cbNombres = new ComboBox();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pbSinConexion).BeginInit();
             SuspendLayout();
@@ -51,7 +53,7 @@
             // 
             btnLunes.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
             btnLunes.ForeColor = Color.DodgerBlue;
-            btnLunes.Location = new Point(94, 34);
+            btnLunes.Location = new Point(99, 56);
             btnLunes.Name = "btnLunes";
             btnLunes.Size = new Size(138, 30);
             btnLunes.TabIndex = 3;
@@ -63,7 +65,7 @@
             // 
             btnMartes.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
             btnMartes.ForeColor = Color.DodgerBlue;
-            btnMartes.Location = new Point(238, 34);
+            btnMartes.Location = new Point(243, 56);
             btnMartes.Name = "btnMartes";
             btnMartes.Size = new Size(138, 30);
             btnMartes.TabIndex = 4;
@@ -75,7 +77,7 @@
             // 
             btnMiercoles.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
             btnMiercoles.ForeColor = Color.DodgerBlue;
-            btnMiercoles.Location = new Point(382, 34);
+            btnMiercoles.Location = new Point(387, 56);
             btnMiercoles.Name = "btnMiercoles";
             btnMiercoles.Size = new Size(138, 30);
             btnMiercoles.TabIndex = 5;
@@ -87,7 +89,7 @@
             // 
             btnJueves.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
             btnJueves.ForeColor = Color.DodgerBlue;
-            btnJueves.Location = new Point(526, 34);
+            btnJueves.Location = new Point(531, 56);
             btnJueves.Name = "btnJueves";
             btnJueves.Size = new Size(138, 30);
             btnJueves.TabIndex = 6;
@@ -99,7 +101,7 @@
             // 
             btnViernes.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
             btnViernes.ForeColor = Color.DodgerBlue;
-            btnViernes.Location = new Point(670, 34);
+            btnViernes.Location = new Point(675, 56);
             btnViernes.Name = "btnViernes";
             btnViernes.Size = new Size(138, 30);
             btnViernes.TabIndex = 7;
@@ -110,18 +112,18 @@
             // btnCrarPrograma
             // 
             btnCrarPrograma.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnCrarPrograma.Location = new Point(382, 486);
+            btnCrarPrograma.Location = new Point(310, 506);
             btnCrarPrograma.Name = "btnCrarPrograma";
-            btnCrarPrograma.Size = new Size(153, 30);
+            btnCrarPrograma.Size = new Size(112, 30);
             btnCrarPrograma.TabIndex = 8;
             btnCrarPrograma.Text = "Crear Programa";
             btnCrarPrograma.UseVisualStyleBackColor = true;
-            btnCrarPrograma.Click += button5_Click;
+            btnCrarPrograma.Click += btnCrarPrograma_Click;
             // 
             // informacion
             // 
             informacion.AutoSize = true;
-            informacion.Location = new Point(105, 77);
+            informacion.Location = new Point(110, 99);
             informacion.Name = "informacion";
             informacion.Size = new Size(0, 15);
             informacion.TabIndex = 10;
@@ -157,7 +159,7 @@
             dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
             dataGridView1.EnableHeadersVisualStyles = false;
             dataGridView1.GridColor = SystemColors.ActiveCaptionText;
-            dataGridView1.Location = new Point(94, 105);
+            dataGridView1.Location = new Point(99, 125);
             dataGridView1.MultiSelect = false;
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersVisible = false;
@@ -170,7 +172,7 @@
             // 
             lblSinConexion.AutoSize = true;
             lblSinConexion.Font = new Font("Century Gothic", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
-            lblSinConexion.Location = new Point(729, 498);
+            lblSinConexion.Location = new Point(734, 518);
             lblSinConexion.Name = "lblSinConexion";
             lblSinConexion.Size = new Size(103, 18);
             lblSinConexion.TabIndex = 17;
@@ -179,7 +181,7 @@
             // pbSinConexion
             // 
             pbSinConexion.Image = (Image)resources.GetObject("pbSinConexion.Image");
-            pbSinConexion.Location = new Point(702, 494);
+            pbSinConexion.Location = new Point(707, 514);
             pbSinConexion.Name = "pbSinConexion";
             pbSinConexion.Size = new Size(31, 27);
             pbSinConexion.SizeMode = PictureBoxSizeMode.Zoom;
@@ -191,12 +193,33 @@
             timerParpadeo.Interval = 500;
             timerParpadeo.Tick += timerSinConexion_Tick;
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            label1.Location = new Point(447, 515);
+            label1.Name = "label1";
+            label1.Size = new Size(30, 15);
+            label1.TabIndex = 18;
+            label1.Text = "para";
+            // 
+            // cbNombres
+            // 
+            cbNombres.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbNombres.FormattingEnabled = true;
+            cbNombres.Location = new Point(499, 511);
+            cbNombres.Name = "cbNombres";
+            cbNombres.Size = new Size(121, 23);
+            cbNombres.TabIndex = 19;
+            // 
             // frmEjercicios
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.MintCream;
             ClientSize = new Size(907, 568);
+            Controls.Add(cbNombres);
+            Controls.Add(label1);
             Controls.Add(lblSinConexion);
             Controls.Add(pbSinConexion);
             Controls.Add(dataGridView1);
@@ -228,5 +251,7 @@
         private Label lblSinConexion;
         private PictureBox pbSinConexion;
         private System.Windows.Forms.Timer timerParpadeo;
+        private Label label1;
+        private ComboBox cbNombres;
     }
 }

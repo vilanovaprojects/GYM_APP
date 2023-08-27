@@ -43,6 +43,8 @@
             pbSinConexion = new PictureBox();
             lblSinConexion = new Label();
             timerParpadeo = new System.Windows.Forms.Timer(components);
+            cbNombres = new ComboBox();
+            label2 = new Label();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pbSinConexion).BeginInit();
             SuspendLayout();
@@ -51,7 +53,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Century Gothic", 14.25F, FontStyle.Italic | FontStyle.Underline, GraphicsUnit.Point);
-            label1.Location = new Point(305, 61);
+            label1.Location = new Point(300, 25);
             label1.Name = "label1";
             label1.Size = new Size(283, 22);
             label1.TabIndex = 0;
@@ -60,7 +62,7 @@
             // btnPDF
             // 
             btnPDF.AccessibleRole = AccessibleRole.None;
-            btnPDF.Location = new Point(382, 486);
+            btnPDF.Location = new Point(387, 506);
             btnPDF.Name = "btnPDF";
             btnPDF.Size = new Size(153, 30);
             btnPDF.TabIndex = 2;
@@ -100,7 +102,7 @@
             dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
             dataGridView1.EnableHeadersVisualStyles = false;
             dataGridView1.GridColor = SystemColors.ActiveCaptionText;
-            dataGridView1.Location = new Point(94, 105);
+            dataGridView1.Location = new Point(99, 125);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.ReadOnly = true;
             dataGridView1.RowHeadersVisible = false;
@@ -146,7 +148,7 @@
             // pbSinConexion
             // 
             pbSinConexion.Image = (Image)resources.GetObject("pbSinConexion.Image");
-            pbSinConexion.Location = new Point(702, 494);
+            pbSinConexion.Location = new Point(707, 514);
             pbSinConexion.Name = "pbSinConexion";
             pbSinConexion.Size = new Size(31, 27);
             pbSinConexion.SizeMode = PictureBoxSizeMode.Zoom;
@@ -157,7 +159,7 @@
             // 
             lblSinConexion.AutoSize = true;
             lblSinConexion.Font = new Font("Century Gothic", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
-            lblSinConexion.Location = new Point(729, 498);
+            lblSinConexion.Location = new Point(734, 518);
             lblSinConexion.Name = "lblSinConexion";
             lblSinConexion.Size = new Size(103, 18);
             lblSinConexion.TabIndex = 15;
@@ -168,12 +170,33 @@
             timerParpadeo.Interval = 500;
             timerParpadeo.Tick += timerParpadeo_Tick;
             // 
+            // cbNombres
+            // 
+            cbNombres.FormattingEnabled = true;
+            cbNombres.Location = new Point(376, 93);
+            cbNombres.Name = "cbNombres";
+            cbNombres.Size = new Size(121, 23);
+            cbNombres.TabIndex = 16;
+            cbNombres.SelectedIndexChanged += cbNombres_SelectedIndexChanged;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            label2.Location = new Point(347, 96);
+            label2.Name = "label2";
+            label2.Size = new Size(23, 15);
+            label2.TabIndex = 17;
+            label2.Text = "de:";
+            // 
             // frmPlaning
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.MintCream;
             ClientSize = new Size(907, 568);
+            Controls.Add(label2);
+            Controls.Add(cbNombres);
             Controls.Add(lblSinConexion);
             Controls.Add(pbSinConexion);
             Controls.Add(dataGridView1);
@@ -201,5 +224,7 @@
         private PictureBox pbSinConexion;
         private Label lblSinConexion;
         private System.Windows.Forms.Timer timerParpadeo;
+        private ComboBox cbNombres;
+        private Label label2;
     }
 }

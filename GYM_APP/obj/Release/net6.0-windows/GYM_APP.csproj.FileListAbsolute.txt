@@ -63,3 +63,7 @@ C:\Users\Moises\Documents\PROGRAMACION\MIS PROYECTOS\GYM_APP\GYM_APP\obj\Release
 C:\Users\Moises\Documents\PROGRAMACION\MIS PROYECTOS\GYM_APP\GYM_APP\obj\Release\net6.0-windows\GYM_APP.genruntimeconfig.cache
 C:\Users\Moises\Documents\PROGRAMACION\MIS PROYECTOS\GYM_APP\GYM_APP\obj\Release\net6.0-windows\ref\GYM_APP.dll
 C:\Users\Moises\Documents\PROGRAMACION\MIS PROYECTOS\GYM_APP\GYM_APP\bin\Release\net6.0-windows\GYM_APP.dll.config
+C:\Users\Moises\Documents\PROGRAMACION\MIS PROYECTOS\GYM_APP\GYM_APP\bin\Release\net6.0-windows\GYM_APP.dll.manifest
+C:\Users\Moises\Documents\PROGRAMACION\MIS PROYECTOS\GYM_APP\GYM_APP\bin\Release\net6.0-windows\GYM_APP.application
+C:\Users\Moises\Documents\PROGRAMACION\MIS PROYECTOS\GYM_APP\GYM_APP\obj\Release\net6.0-windows\GYM_APP.dll.manifest
+C:\Users\Moises\Documents\PROGRAMACION\MIS PROYECTOS\GYM_APP\GYM_APP\obj\Release\net6.0-windows\GYM_APP.application
