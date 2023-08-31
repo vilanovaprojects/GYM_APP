@@ -67,6 +67,11 @@ BEGIN
     EXECUTE stmt;
     DEALLOCATE PREPARE stmt;
     
+    SET @sql = CONCAT('GRANT SELECT ON GYM_APP.EJERCICIOS TO ''', Inombre, '''');
+    PREPARE stmt FROM @sql;
+    EXECUTE stmt;
+    DEALLOCATE PREPARE stmt;
+    
 	INSERT INTO `GYM_APP`.`USUARIOS` (USUARIO, CONTRASENA) VALUES (Inombre, Icontrasena);
 	COMMIT;
 END;$$
